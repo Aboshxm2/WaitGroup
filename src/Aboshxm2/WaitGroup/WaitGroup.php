@@ -21,6 +21,8 @@ class WaitGroup
         $this->count -= 1;
 
         if($this->count <= 0) {
+            if(!isset($this->then)) return;
+            
             ($this->then)();
         }
     }
