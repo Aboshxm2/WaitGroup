@@ -27,6 +27,12 @@ class WaitGroup
 
     public function wait(Closure $then): void
     {
+        if($this->count <= 0) {
+            $then();
+
+            return;
+        }
+
         $this->then = $then;
     }
 }
